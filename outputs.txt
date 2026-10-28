@@ -1,0 +1,47 @@
+GRAPH EDGES:
+  S->A: 1
+  S->B: 4
+  S->C: 2
+  A->D: 2
+  A->G: 9
+  B->G: 3
+  C->G: 5
+  D->G: 2
+Original heuristic: {'S': 5, 'A': 3, 'B': 3, 'C': 4, 'D': 1, 'G': 0}
+True remaining costs: {'A': 4, 'D': 2, 'G': 0, 'C': 5, 'S': 5, 'B': 3}
+A* with supplied example heuristic
+  path: S -> A -> D -> G
+  returned_cost: 5
+  independent_path_cost: 5
+  processed_trace: ['S', 'A', 'D', 'G']
+  expansion_count: 4
+  detailed_trace:
+    {'event': 'PROCESS', 'node': 'S', 'g': 0, 'h': 5, 'f': 5, 'frontier_after_pop': []}
+    {'event': 'PROCESS', 'node': 'A', 'g': 1, 'h': 3, 'f': 4, 'frontier_after_pop': [('B', 4, 7), ('C', 2, 6)]}
+    {'event': 'PROCESS', 'node': 'D', 'g': 3, 'h': 1, 'f': 4, 'frontier_after_pop': [('B', 4, 7), ('C', 2, 6), ('G', 10, 10)]}
+    {'event': 'PROCESS', 'node': 'G', 'g': 5, 'h': 0, 'f': 5, 'frontier_after_pop': [('B', 4, 7), ('C', 2, 6), ('G', 10, 10)]}
+UCS control (h=0)
+  path: S -> A -> D -> G
+  returned_cost: 5
+  independent_path_cost: 5
+  processed_trace: ['S', 'A', 'C', 'D', 'B', 'G']
+  expansion_count: 6
+  detailed_trace:
+    {'event': 'PROCESS', 'node': 'S', 'g': 0, 'h': 0, 'f': 0, 'frontier_after_pop': []}
+    {'event': 'PROCESS', 'node': 'A', 'g': 1, 'h': 0, 'f': 1, 'frontier_after_pop': [('B', 4, 4), ('C', 2, 2)]}
+    {'event': 'PROCESS', 'node': 'C', 'g': 2, 'h': 0, 'f': 2, 'frontier_after_pop': [('B', 4, 4), ('D', 3, 3), ('G', 10, 10)]}
+    {'event': 'PROCESS', 'node': 'D', 'g': 3, 'h': 0, 'f': 3, 'frontier_after_pop': [('B', 4, 4), ('G', 7, 7), ('G', 10, 10)]}
+    {'event': 'PROCESS', 'node': 'B', 'g': 4, 'h': 0, 'f': 4, 'frontier_after_pop': [('G', 5, 5), ('G', 7, 7), ('G', 10, 10)]}
+    {'event': 'PROCESS', 'node': 'G', 'g': 5, 'h': 0, 'f': 5, 'frontier_after_pop': [('G', 7, 7), ('G', 10, 10)]}
+Modified heuristic (only C changed): {'S': 5, 'A': 3, 'B': 3, 'C': 10, 'D': 1, 'G': 0}
+A* with overestimate h(C)=10
+  path: S -> A -> D -> G
+  returned_cost: 5
+  independent_path_cost: 5
+  processed_trace: ['S', 'A', 'D', 'G']
+  expansion_count: 4
+  detailed_trace:
+    {'event': 'PROCESS', 'node': 'S', 'g': 0, 'h': 5, 'f': 5, 'frontier_after_pop': []}
+    {'event': 'PROCESS', 'node': 'A', 'g': 1, 'h': 3, 'f': 4, 'frontier_after_pop': [('B', 4, 7), ('C', 2, 12)]}
+    {'event': 'PROCESS', 'node': 'D', 'g': 3, 'h': 1, 'f': 4, 'frontier_after_pop': [('B', 4, 7), ('C', 2, 12), ('G', 10, 10)]}
+    {'event': 'PROCESS', 'node': 'G', 'g': 5, 'h': 0, 'f': 5, 'frontier_after_pop': [('B', 4, 7), ('C', 2, 12), ('G', 10, 10)]}
